@@ -2,9 +2,22 @@
     display: flex;
     flex-wrap: wrap;
     
-  
 }
 
 .firstRow {
     margin-top: 4rem;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+.card {
+    height: 150px;
+    width: 80px;
+    max-width: 120px;
+}
+
+.card__back {
+    background-image: url("/img/card-back-black.png");
 }

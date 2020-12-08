@@ -10,10 +10,11 @@
     const getOneCard = (icon) => {
         const div = document.createElement('div');
         div.classList.add('cards-container');
-        div.innerHTML = `<div class="front">
+        div.classList.add('card');
+        div.innerHTML = `<div class="card__front">
                 <i class="fa ${icon}"></i>
             </div>
-            <div class="back"></div>`;
+            <div class="card__back"></div>`;
             return div;
     };
 
