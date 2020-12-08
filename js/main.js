@@ -41,8 +41,8 @@
     //Show cards and duplicate
     const iconArray = icons.concat(icons);
     shuffle(iconArray);
-    const row1 = document.querySelector('.cards-container:nth-child(2)');
-    const row2 = document.querySelector('.cards-container:nth-child(3)');
+    const row1 = document.querySelector('.firstRow');
+    const row2 = document.querySelector('.secondRow');
     let i = 0;
     for (const icon of iconArray) {
         i++;
