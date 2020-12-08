@@ -1,4 +1,4 @@
-(function() {
+(function () {
     const icons = [
         'fa-ship',
         'fa-plane',
@@ -6,6 +6,8 @@
         'fa-space-shuttle',
         'fa-rocket',
     ];
+
+    let points = 0;
 
     const getOneCard = (icon) => {
         const div = document.createElement('div');
@@ -17,7 +19,7 @@
             <div class="card__back">
                 <img src="/img/card-back-black.png">
             </div>`;
-            return div;
+        return div;
     };
 
     const shuffle = (array) => {
@@ -52,19 +54,60 @@
         const card = getOneCard(icon);
         if (i < 6) {
             row1.appendChild(card);
-            } else {
-                row2.appendChild(card);
-            }
+        } else {
+            row2.appendChild(card);
+        }
     }
 
+
+
+    let blockClicks = false;
     const cardClick = (ev) => {
+        if (blockClicks) {
+            return;
+        }
+
+
+
+
+
         ev.currentTarget.classList.toggle('flipped');
+        const flippedCards = document.querySelectorAll('.card.flipped');
+        if (flippedCards.length > 1) {
+            blockClicks = true;
+            const to = setTimeout( () => {
+                clearTimeout(to);
+                blockClicks = false;
+                document.querySelectorAll('.card').forEach( card => {
+                    card.classList.remove('flipped');
+                });
+            }, 2000);
+
+        checkPair();
+    }
     };
 
     const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
+    cards.forEach( card => {
         card.addEventListener('click', cardClick);
-    })
+    });
 
+    const showPoints = (points) => {
+        document.querySelector('.user-points').textContent = points;
+    }
 
+    const checkPair = () => {
+        const firstCardIcon = document.querySelector('.card.flipped i');
+        if (firstCardIcon) {
+            const firstIconClass = firstCardIcon.className.split(' ');
+            const pair = document.querySelectorAll(`.card.flipped .${firstIconClass.pop()}`);
+            if (pair.length == 2) {
+                points++;
+                showPoints(points);
+                document.querySelectorAll(`.card.flipped`).forEach( 
+                    card => card.classList.add('found') 
+                );
+            }
+        }
+    }
 })();

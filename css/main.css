@@ -31,7 +31,11 @@ body {
 }
 
 
-
+.card__front i {
+    font-size: 40px;
+    
+  
+};
 
 
 .card__back {
@@ -39,12 +43,18 @@ body {
 }
 
 .card__front {
+    display: flex;
     transform: rotateY(180deg);
+    justify-content: center;
+    align-items: center;
+   
 }
 
 .card.flipped {
     transform: rotateY(180deg);
 }
+
+
 
 
 .card__back img {
