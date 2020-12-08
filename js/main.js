@@ -14,7 +14,9 @@
         div.innerHTML = `<div class="card__front">
                 <i class="fa ${icon}"></i>
             </div>
-            <div class="card__back"></div>`;
+            <div class="card__back">
+                <img src="/img/card-back-black.png">
+            </div>`;
             return div;
     };
 
@@ -54,5 +56,15 @@
                 row2.appendChild(card);
             }
     }
+
+    const cardClick = (ev) => {
+        ev.currentTarget.classList.toggle('flipped');
+    };
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('click', cardClick);
+    })
+
 
 })();

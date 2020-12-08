@@ -13,11 +13,40 @@ body {
 }
 
 .card {
-    height: 150px;
+    height: 100%;
     width: 80px;
-    max-width: 120px;
+    
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    transition: transform .3s;
+    transform-style: preserve-3d;
 }
 
+.card__front, .card__back {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+
+
+
+
 .card__back {
-    background-image: url("/img/card-back-black.png");
+   transform: rotateY(0deg);
+}
+
+.card__front {
+    transform: rotateY(180deg);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+
+.card__back img {
+    max-width: 100%;
 }
